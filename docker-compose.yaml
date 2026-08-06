@@ -241,7 +241,6 @@ services:
       - POSTGRES_USER=temporal
       - POSTGRES_PWD=temporal
       - POSTGRES_SEEDS=temporal-postgresql
-      - DYNAMIC_CONFIG_FILE_PATH=config/dynamicconfig/development-sql.yaml
       - ENABLE_ES=true
       - ES_SEEDS=temporal-elasticsearch
       - ES_VERSION=v7
@@ -254,10 +253,6 @@ services:
       timeout: 10s
       retries: 40
       start_period: 300s
-    volumes:
-      - ./dynamicconfig:/etc/temporal/config/dynamicconfig
-    labels:
-      kompose.volume.type: configMap
 
   temporal-admin-tools:
     container_name: temporal-admin-tools
