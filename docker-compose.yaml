@@ -129,7 +129,7 @@ services:
       postiz-redis:
         condition: service_healthy
       temporal:
-        condition: service_healthy
+        condition: service_started
 
   postiz-postgres:
     image: postgres:17-alpine
@@ -266,7 +266,7 @@ services:
     stdin_open: true
     depends_on:
       temporal:
-        condition: service_healthy
+        condition: service_started
     tty: true
 
   temporal-ui:
@@ -288,7 +288,7 @@ services:
       start_period: 20s
     depends_on:
       temporal:
-        condition: service_healthy
+        condition: service_started
 
 volumes:
   postgres-volume:
